@@ -2,7 +2,8 @@ module.exports = {
     env: {
         browser: true,
         node: true,
-        es6: true
+        es6: true,
+        'vue/setup-compiler-macros': true
     },
     extends: [
         'plugin:vue/vue3-recommended',
@@ -156,8 +157,8 @@ module.exports = {
             'avoidEscape': true,
             'allowTemplateLiterals': true
         }],
-        'semi': [2, 'never'],
-        'semi-spacing': [2, {
+        'semi': 'error',
+        'semi-spacing': ['error', {
             'before': false,
             'after': true
         }],

@@ -2,3 +2,4 @@ src/assets
 public
 dist
 .vscode
+*.tmp*
