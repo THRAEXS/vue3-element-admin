@@ -8,7 +8,7 @@
     "dev": "vite --port 8717",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src --fix"
   },
   "dependencies": {
     "vue": "3.2.25",
