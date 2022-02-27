@@ -10,6 +10,11 @@ module.exports = {
     ],
     rules: {
         'vue/html-indent': ['error', 4],
+        'vue/multi-word-component-names': 'off',
+        'vue/singleline-html-element-content-newline': 'off',
+        'vue/max-attributes-per-line': ['error', {
+            'singleline': 6
+        }],
         'accessor-pairs': 2,
         'arrow-spacing': [2, {
             'before': true,
