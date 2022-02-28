@@ -1,5 +1,3 @@
 <template>
-    <div>
-        Sidebar
-    </div>
+    <label>Sidebar</label>
 </template>
