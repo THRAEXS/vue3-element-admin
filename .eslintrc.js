@@ -11,7 +11,7 @@ module.exports = {
     ],
     rules: {
         'vue/html-indent': ['error', 4],
-        'vue/multi-word-component-names': 'off',
+        // 'vue/multi-word-component-names': 'off',
         'vue/singleline-html-element-content-newline': 'off',
         'vue/max-attributes-per-line': ['error', {
             'singleline': 6
@@ -186,4 +186,4 @@ module.exports = {
         }],
         'array-bracket-spacing': [2, 'never']
     }
-}
+};
