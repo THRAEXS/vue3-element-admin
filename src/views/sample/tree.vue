@@ -1,0 +1,3 @@
+<template>
+    Example Tree
+</template>

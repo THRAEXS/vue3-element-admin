@@ -1,4 +1,4 @@
 export default {
-    title: 'vue3-admin-template',
+    title: 'Vue3 Admin Template',
     tokenKey: 'X-TOKEN'
 };
