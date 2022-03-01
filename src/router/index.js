@@ -4,16 +4,17 @@ import {
 } from 'vue-router';
 
 import Layout from '@/layout/index.vue';
+import Routes from './routes';
 
 const routes = [
-    { path: '/login', component: () => import('@/views/login.vue') },
+    { path: '/login', component: () => import('@/views/base/login.vue') },
     {
         path: '/',
         component: Layout,
         children: [
             {
                 path: '',
-                component: () => import('@/views/home.vue'),
+                component: () => import('@/views/base/dashboard.vue'),
                 meta: { title: 'Home' }
             }
         ]
@@ -24,7 +25,7 @@ const routes = [
         children: [
             {
                 path: '',
-                component: () => import('@/views/about.vue'),
+                component: () => import('@/views/base/about.vue'),
                 meta: { title: 'About' }
             }
         ]
@@ -34,20 +35,17 @@ const routes = [
         component: Layout,
         children: [
             {
-                path: '404',
-                component: () => import('@/views/error/404.vue'),
-                meta: { title: '404' }
-            },
-            {
-                path: '500',
-                component: () => import('@/views/error/500.vue'),
-                meta: { title: '500' }
+                path: '',
+                component: () => import('@/views/base/error.vue'),
+                meta: { title: 'Error' }
             }
         ]
-    }
+    },
+    ...Routes
 ];
 
 export default createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    scrollBehavior: _ => ({ y: 0 })
 });
