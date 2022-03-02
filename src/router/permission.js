@@ -1,19 +1,29 @@
 import router from '.';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { getPageTitle } from '@/utils';
+import { pageTitle, Cookie } from '@/utils';
 
 NProgress.configure({ showSpinner: false });
 
-console.log(import.meta.env);
+const PERMITS = [
+    '/login'
+];
 
 router.beforeEach((to, from, next) => {
     NProgress.start();
-    document.title = getPageTitle(to.meta?.title);
-    next();
+    document.title = pageTitle(to.meta?.title);
+
+    const token = Cookie.getToken();
+
+    if (token) {
+        next();
+    } else {
+        if (PERMITS.includes(to.path)) {
+            next();
+        } else {
+            next(`/login?redirect=${to.path}`);
+        }
+    }
 });
 
-router.afterEach(() => {
-    // finish progress bar
-    NProgress.done();
-});
+router.afterEach(NProgress.done);
