@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-const TOKEN_KEY = import.meta.env.TOKEN_KEY;
+const TOKEN_KEY = import.meta.env.VITE_TOKEN_KEY;
 
 export const getToken = _ => Cookies.get(TOKEN_KEY);
 

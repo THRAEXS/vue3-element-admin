@@ -21,7 +21,8 @@ router.beforeEach((to, from, next) => {
         if (PERMITS.includes(to.path)) {
             next();
         } else {
-            next(`/login?redirect=${to.path}`);
+            const isRoot = to.path === '/';
+            next(isRoot ? '/login' : `/login?redirect=${to.path}`);
         }
     }
 });

@@ -9,6 +9,7 @@ export async function login(data) {
 
     const { username, password } = data;
 
+    // console.log('request login:', username, password);
     return username === 'master' && password === '111111' ? {
         code: 20000,
         data: `${username.toUpperCase()}-TOKEN`
@@ -39,3 +40,5 @@ export function logout() {
         method: 'POST'
     });
 }
+
+export default { login, info, logout };
