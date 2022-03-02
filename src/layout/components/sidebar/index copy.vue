@@ -1,11 +1,10 @@
 <script setup>
-// import { Setting } from '@element-plus/icons-vue';
-import SidebarItem from './SidebarItem.vue';
+import { Setting } from '@element-plus/icons-vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const routes = router.options.routes.filter(({ meta }) => !meta?.hidden);
 
-/* const available = routes.map(it => {
+const available = routes.map(it => {
     if (it.children.length > 1) {
         const { path, meta, children } = it;
         return { path, meta, children };
@@ -16,7 +15,7 @@ const routes = router.options.routes.filter(({ meta }) => !meta?.hidden);
 
         return { path: newPath, meta };
     }
-}); */
+});
 </script>
 
 <template>
@@ -26,13 +25,7 @@ const routes = router.options.routes.filter(({ meta }) => !meta?.hidden);
         text-color="#FFFFFF"
         :router="true"
     >
-        <SidebarItem
-            v-for="item in routes"
-            :key="item.path"
-            :data="item"
-            :base-path="item.path"
-        />
-        <!-- <template v-for="{ path, meta, children } in available">
+        <template v-for="{ path, meta, children } in available">
             <el-sub-menu
                 v-if="children?.length > 0"
                 :key="path"
@@ -55,6 +48,6 @@ const routes = router.options.routes.filter(({ meta }) => !meta?.hidden);
                 <el-icon><Setting /></el-icon>
                 <span>{{ meta?.title }} - {{ path }}</span>
             </el-menu-item>
-        </template> -->
+        </template>
     </el-menu>
 </template>

@@ -84,7 +84,7 @@ export default [
                 path: 'menu2',
                 component: () => import('@/views/sample/nested/menu2/index.vue'),
                 name: 'Menu2Router',
-                meta: { title: 'menu2' }
+                meta: { title: 'Menu2' }
             }
         ]
     }
