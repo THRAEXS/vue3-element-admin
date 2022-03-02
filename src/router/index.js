@@ -24,17 +24,6 @@ const routes = [
         ]
     },
     {
-        path: '/about',
-        component: Layout,
-        children: [
-            {
-                path: '',
-                component: () => import('@/views/base/about.vue'),
-                meta: { title: 'About' }
-            }
-        ]
-    },
-    {
         path: '/error',
         component: Layout,
         meta: { hidden: true },
@@ -46,7 +35,18 @@ const routes = [
             }
         ]
     },
-    ...Routes
+    ...Routes,
+    {
+        path: '/about',
+        component: Layout,
+        children: [
+            {
+                path: '',
+                component: () => import('@/views/base/about.vue'),
+                meta: { title: 'About' }
+            }
+        ]
+    }
 ];
 
 export default createRouter({

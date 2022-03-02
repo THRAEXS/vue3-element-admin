@@ -8,6 +8,18 @@ export default [
         meta: { title: '系统管理' },
         children: [
             {
+                path: 'user',
+                name: 'UserRouter',
+                component: () => import('@/views/system/user.vue'),
+                meta: { title: '用户管理' }
+            },
+            {
+                path: 'org',
+                name: 'OrgRouter',
+                component: () => import('@/views/system/org.vue'),
+                meta: { title: '机构管理' }
+            },
+            {
                 path: 'menu',
                 name: 'MenuRouter',
                 component: () => import('@/views/system/menu.vue'),
@@ -30,18 +42,6 @@ export default [
                 name: 'GrantRouter',
                 component: () => import('@/views/system/grant.vue'),
                 meta: { title: '授权管理' }
-            },
-            {
-                path: 'org',
-                name: 'OrgRouter',
-                component: () => import('@/views/system/org.vue'),
-                meta: { title: '机构管理' }
-            },
-            {
-                path: 'user',
-                name: 'UserRouter',
-                component: () => import('@/views/system/user.vue'),
-                meta: { title: '用户管理' }
             }
         ]
     }
