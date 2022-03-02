@@ -7,7 +7,11 @@ import Layout from '@/layout/index.vue';
 import Routes from './routes';
 
 const routes = [
-    { path: '/login', component: () => import('@/views/base/login.vue') },
+    {
+        path: '/login',
+        component: () => import('@/views/base/login.vue'),
+        meta: { hidden: true }
+    },
     {
         path: '/',
         component: Layout,
@@ -33,6 +37,7 @@ const routes = [
     {
         path: '/error',
         component: Layout,
+        meta: { hidden: true },
         children: [
             {
                 path: '',

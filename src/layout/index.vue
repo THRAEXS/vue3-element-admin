@@ -4,7 +4,7 @@ import { Navbar, Sidebar, AppMain } from './components';
 
 <template>
     <el-container class="common-layout">
-        <el-aside width="280px">
+        <el-aside>
             <Sidebar />
         </el-aside>
         <el-container>

@@ -5,6 +5,7 @@ export default [
         path: '/system',
         component: Layout,
         redirect: '/system/menu',
+        meta: { title: '系统管理' },
         children: [
             {
                 path: 'menu',
