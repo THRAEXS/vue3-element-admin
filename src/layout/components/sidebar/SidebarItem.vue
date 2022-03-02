@@ -13,6 +13,7 @@ const props = defineProps({
         default: ''
     }
 });
+
 const {
     data: { value: {
         path,
@@ -22,6 +23,7 @@ const {
     basePath: { value: basePath }
 } = toRefs(props);
 
+// TODO: Opt
 const available = children.filter(({ meta }) => !meta?.hidden);
 const multiple = available.length > 1;
 

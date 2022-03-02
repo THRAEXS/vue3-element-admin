@@ -19,7 +19,7 @@ const routes = [
             {
                 path: '',
                 component: () => import('@/views/base/dashboard.vue'),
-                meta: { title: 'Home' }
+                meta: { title: 'Dashboard' }
             }
         ]
     },
