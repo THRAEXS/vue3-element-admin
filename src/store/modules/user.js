@@ -2,7 +2,7 @@ import user from '@/api/user';
 import { Cookie } from '@/utils';
 
 const defaultState = () => ({
-    token: Cookie.getToken(),
+    token: Cookie.getToken() ?? null,
     info: null
 });
 
@@ -27,8 +27,12 @@ const actions = {
     info({ commit }) {
         return new Promise((resolve, reject) => {
             user.info().then(({ data }) => {
-                commit('SET_INFO', data);
-                resolve(data);
+                if (data) {
+                    commit('SET_INFO', data);
+                    resolve(data);
+                } else {
+                    reject('Verification failed, please Login again.');
+                }
             }).catch(reject);
         });
     },
@@ -42,11 +46,8 @@ const actions = {
         });
     },
     reset({ commit }) {
-        return Promise(resolve => {
-            Cookie.removeToken();
-            commit('RESET_STATE');
-            resolve();
-        });
+        Cookie.removeToken();
+        commit('RESET_STATE');
     }
 };
 
