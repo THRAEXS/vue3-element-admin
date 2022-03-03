@@ -19,6 +19,7 @@ const bodyHeight = document.body.clientHeight;
             :active-text-color="activeTextColor"
             :router="true"
             :default-active="activeMenu"
+            :style="{ borderRight: `1px solid ${menuBg}` }"
         >
             <SidebarItem
                 v-for="item in available"
@@ -29,9 +30,3 @@ const bodyHeight = document.body.clientHeight;
         </el-menu>
     </el-scrollbar>
 </template>
-
-<style scoped>
-.el-menu {
-    border-right: 1px solid #181915;
-}
-</style>

@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter, useRoute } from 'vue-router';
 import { useStore } from 'vuex';
-import { DArrowLeft } from '@element-plus/icons-vue';
+import { Setting } from '@element-plus/icons-vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -15,15 +15,23 @@ async function handleLogout() {
 </script>
 
 <template>
-    <el-row>
+    <el-row class="navbar">
         <el-col :span="24" align="right">
             <el-button
                 type="danger"
                 size="small"
-                :icon="DArrowLeft"
+                :icon="Setting"
                 circle
                 @click="handleLogout"
             />
         </el-col>
     </el-row>
 </template>
+
+<style list="scsss" scoped>
+.navbar {
+    background: #FFFFFF;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    padding: 0 10px;
+}
+</style>

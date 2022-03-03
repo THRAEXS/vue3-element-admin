@@ -8,13 +8,11 @@ const test = {
     children: [
         {
             path: 'table',
-            name: 'TableRouuter',
             component: () => import('@/views/sample/table.vue'),
             meta: { title: 'Table', icon: 'table' }
         },
         {
             path: 'tree',
-            name: 'TreeRouter',
             component: () => import('@/views/sample/tree.vue'),
             meta: { title: 'Tree', icon: 'tree' }
         }
@@ -37,7 +35,7 @@ export default [
         children: [
             {
                 path: 'table',
-                name: 'TableRouuter',
+                name: 'TableRouter',
                 component: () => import('@/views/sample/table.vue'),
                 meta: { title: 'Table', icon: 'table' }
             },

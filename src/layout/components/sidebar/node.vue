@@ -12,5 +12,4 @@ defineProps({
 <template>
     <el-icon><Setting /></el-icon>
     <span>{{ title }}</span>
-    <!-- <span>{{ title }} - {{ title }} - {{ title }} - {{ title }} - {{ title }}</span> -->
 </template>
