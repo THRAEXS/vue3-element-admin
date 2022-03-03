@@ -1,32 +1,52 @@
 import user from '@/api/user';
 import { Cookie } from '@/utils';
 
-const state = () => {
-    return {
-        token: Cookie.getToken()
-    };
-};
+const defaultState = () => ({
+    token: Cookie.getToken(),
+    user: null
+});
+
+const state = defaultState();
 
 const mutations = {
-    SET_TOKEN: (state, token) => (state.token = token)
+    RESET_STATE: state => Object.assign(state, defaultState()),
+    SET_TOKEN: (state, token) => (state.token = token),
+    SET_USER: (state, data) => (state.user = data)
 };
 
 const actions = {
     login({ commit }, data) {
-        // const { username, password } = data;
         return new Promise((resolve, reject) => {
             user.login(data).then(res => {
                 commit('SET_TOKEN', res.data);
                 Cookie.setToken(res.data);
                 resolve();
-            }).catch(error => reject(error));
+            }).catch(reject);
         });
     },
-    info() {
-        console.log('info:', arguments);
+    info({ commit }) {
+        return new Promise((resolve, reject) => {
+            user.info().then(({ data }) => {
+                commit('SET_USER', data);
+                resolve(data);
+            }).catch(reject);
+        });
     },
-    logout() {
-        console.log('logout:', arguments);
+    logout({ commit }) {
+        return new Promise((resolve, reject) => {
+            user.logout().then(({ data }) => {
+                Cookie.removeToken();
+                commit('RESET_STATE');
+                resolve(data);
+            }).catch(reject);
+        });
+    },
+    reset({ commit }) {
+        return Promise(resolve => {
+            Cookie.removeToken();
+            commit('RESET_STATE');
+            resolve();
+        });
     }
 };
 

@@ -7,3 +7,4 @@
 - [ ] Permission
 - [ ] `.env`(Page title)
 - [ ] Page style
+- [ ] Reset router

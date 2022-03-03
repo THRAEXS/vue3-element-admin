@@ -28,17 +28,24 @@ export async function info() {
     return {
         code: 20000,
         data: {
+            id: 'MASTER-ID',
             name: 'Master',
+            username: 'master',
             roles: ['admin']
         }
     };
 }
 
-export function logout() {
-    return request({
+export async function logout() {
+    /* return request({
         url: '/api/thraex/user/logout',
         method: 'POST'
-    });
+    }); */
+
+    return {
+        code: 20000,
+        data: true
+    };
 }
 
 export default { login, info, logout };
