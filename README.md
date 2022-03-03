@@ -2,7 +2,7 @@
 
 ## TODOS
 
-- [ ] Menu opt
+- [X] Menu opt
 - [ ] Login
 - [ ] Permission
 - [ ] `.env`(Page title)

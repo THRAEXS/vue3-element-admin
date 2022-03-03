@@ -1,10 +1,32 @@
 import axios from 'axios';
+import { getters } from '@/store';
+import { Cookie } from '@/utils';
 
-console.log('request:', import.meta.env);
+const TOKEN_KEY = import.meta.env.VITE_TOKEN_KEY;
 
 const instance = axios.create({
     baseURL: import.meta.env.VITE_API,
-    timeout: 60000
+    timeout: 6000
 });
+
+instance.interceptors.request.use(
+    config => {
+        getters.token && (config.headers[TOKEN_KEY] = Cookie.getToken());
+
+        return config;
+    },
+    error => {
+        console.error('[TODO]', 'Request:', error);
+        return Promise.reject(error);
+    }
+);
+
+instance.interceptors.response.use(
+    response => response,
+    error => {
+        console.error('[TODO]', 'Response:', error);
+        return Promise.reject(error);
+    }
+);
 
 export default instance;
