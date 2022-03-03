@@ -1,6 +1,34 @@
 import Layout from '@/layout/index.vue';
 
+const test = {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/table',
+    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    children: [
+        {
+            path: 'table',
+            name: 'TableRouuter',
+            component: () => import('@/views/sample/table.vue'),
+            meta: { title: 'Table', icon: 'table' }
+        },
+        {
+            path: 'tree',
+            name: 'TreeRouter',
+            component: () => import('@/views/sample/tree.vue'),
+            meta: { title: 'Tree', icon: 'tree' }
+        }
+    ]
+};
+const tests = [];
+for (let i = 0; i < 8; i++) {
+    tests.push(Object.assign({}, test, {
+        path: '/example' + i,
+        meta: { title: 'Example-' + i, icon: 'el-icon-s-help' }
+    }));
+}
 export default [
+    ...tests,
     {
         path: '/example',
         component: Layout,
