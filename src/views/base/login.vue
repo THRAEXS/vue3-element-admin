@@ -31,6 +31,7 @@ function handleLogin() {
                 class="login-form"
                 auto-complete="on"
                 label-position="left"
+                size="large"
             >
                 <el-form-item prop="username">
                     <el-input
@@ -59,6 +60,7 @@ function handleLogin() {
                 <el-button
                     type="primary"
                     style="width:100%;"
+                    color="#373835"
                     :loading="loading"
                     @click="handleLogin"
                 >
@@ -86,6 +88,21 @@ $cursor: #fff;
         margin: 0px auto 40px auto;
         text-align: center;
         font-weight: bold;
+    }
+
+    .el-input {
+
+        ::v-deep input {
+            background: transparent;
+            -webkit-appearance: none;
+            color: $light_gray;
+            caret-color: $cursor;
+
+            &:-webkit-autofill {
+                box-shadow: 0 0 0px 1000px $bg inset !important;
+                -webkit-text-fill-color: $cursor !important;
+            }
+        }
     }
 }
 </style>

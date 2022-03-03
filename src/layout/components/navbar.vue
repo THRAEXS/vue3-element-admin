@@ -20,6 +20,7 @@ async function handleLogout() {
             <el-button
                 type="danger"
                 size="small"
+                color="#373835"
                 :icon="Setting"
                 circle
                 @click="handleLogout"
@@ -31,7 +32,7 @@ async function handleLogout() {
 <style list="scsss" scoped>
 .navbar {
     background: #FFFFFF;
-    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .1);
     padding: 0 10px;
 }
 </style>
