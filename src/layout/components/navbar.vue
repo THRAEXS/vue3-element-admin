@@ -1,8 +1,15 @@
 <script setup>
+import { useRouter, useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 import { DArrowLeft } from '@element-plus/icons-vue';
 
-function handleLogout() {
-    alert('logout...');
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
+
+async function handleLogout() {
+    await store.dispatch('user/logout');
+    router.push(`/login?redirect=${route.fullPath}`);
 }
 </script>
 

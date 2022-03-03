@@ -3,7 +3,7 @@ import { Cookie } from '@/utils';
 
 const defaultState = () => ({
     token: Cookie.getToken(),
-    user: null
+    info: null
 });
 
 const state = defaultState();
@@ -11,7 +11,7 @@ const state = defaultState();
 const mutations = {
     RESET_STATE: state => Object.assign(state, defaultState()),
     SET_TOKEN: (state, token) => (state.token = token),
-    SET_USER: (state, data) => (state.user = data)
+    SET_INFO: (state, data) => (state.info = data)
 };
 
 const actions = {
@@ -27,7 +27,7 @@ const actions = {
     info({ commit }) {
         return new Promise((resolve, reject) => {
             user.info().then(({ data }) => {
-                commit('SET_USER', data);
+                commit('SET_INFO', data);
                 resolve(data);
             }).catch(reject);
         });

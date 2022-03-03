@@ -1,7 +1,7 @@
 export default {
-    token: ({ token }) => token,
-    user: ({ user }) => user,
-    uid: ({ user }) => user?.id,
-    name: ({ user }) => user?.name,
-    username: ({ user }) => user?.username
+    token: ({ user: { token }}) => token,
+    info: ({ user }) => user.info,
+    uid: ({ user }) => user.info?.id ?? null,
+    name: ({ user }) => user.info?.name ?? null,
+    username: ({ user }) => user.info?.username ?? null
 };
