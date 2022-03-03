@@ -35,6 +35,11 @@ const routes = [
             }
         ]
     },
+    {
+        path: '/error1',
+        component: () => import('@/views/base/error.vue'),
+        meta: { title: 'Error1' }
+    },
     ...Routes,
     {
         path: '/about',
@@ -43,7 +48,7 @@ const routes = [
             {
                 path: '',
                 component: () => import('@/views/base/about.vue'),
-                meta: { title: 'About' }
+                meta: { title: 'About', hidden: true }
             }
         ]
     }

@@ -17,39 +17,45 @@ const props = defineProps({
 const {
     data: { value: {
         path,
-        children = [],
+        children,
         meta = {}
     }},
     basePath: { value: basePath }
 } = toRefs(props);
 
 // TODO: Opt
-const available = children.filter(({ meta }) => !meta?.hidden);
-const multiple = available.length > 1;
+const [visible, multiple, available, title, finalPath] = children ? (() => {
+    const available = children.filter(({ meta }) => !meta?.hidden);
+    const multiple = available.length > 1;
 
-const onlyOne = available.length === 1;
-const [first] = available;
-const title = onlyOne ? first.meta?.title : meta?.title;
-const finalPath = resolve(basePath, path, onlyOne ? first.path : '');
+    const onlyOne = available.length === 1;
+    const [first] = available;
+    const title = onlyOne ? first.meta?.title : meta?.title;
+    const finalPath = resolve(basePath, path, onlyOne ? first.path : '');
+
+    return [available.length > 0, multiple, available, title, finalPath];
+})() : [true, false, null, meta?.title, resolve(basePath, path)];
 </script>
 
 <template>
-    <el-sub-menu
-        v-if="multiple"
-        :index="finalPath"
-    >
-        <template #title>
-            <Node :title="title" />
-        </template>
-        <SidebarItem
-            v-for="item in available"
-            :key="resolve(finalPath, item.path)"
-            :data="item"
-            :base-path="finalPath"
-        />
-    </el-sub-menu>
+    <template v-if="visible">
+        <el-sub-menu
+            v-if="multiple"
+            :index="finalPath"
+        >
+            <template #title>
+                <Node :title="title" />
+            </template>
+            <SidebarItem
+                v-for="item in available"
+                :key="resolve(finalPath, item.path)"
+                :data="item"
+                :base-path="finalPath"
+            />
+        </el-sub-menu>
 
-    <el-menu-item v-else :index="finalPath">
-        <Node :title="title" />
-    </el-menu-item>
+        <el-menu-item v-else :index="finalPath">
+            <Node :title="title" />
+        </el-menu-item>
+    </template>
 </template>
