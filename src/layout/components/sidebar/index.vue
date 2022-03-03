@@ -2,13 +2,12 @@
 import SidebarItem from './SidebarItem.vue';
 import { useRouter, useRoute } from 'vue-router';
 
-import { menuBg, textColor, activeTextColor } from './color';
-
 const { options: { routes }} = useRouter();
 const available = routes.filter(({ meta }) => !meta?.hidden);
 const { path: activeMenu } = useRoute();
 
 const bodyHeight = document.body.clientHeight;
+const [menuBg, textColor, activeTextColor] = ['#181915', '#FFFFFF', '#FFD04B'];
 </script>
 
 <template>

@@ -1,5 +1,7 @@
 <script setup>
 import { Navbar, Sidebar, AppMain } from './components';
+
+const scrollHeight = document.body.clientHeight - 60;
 </script>
 
 <template>
@@ -12,22 +14,29 @@ import { Navbar, Sidebar, AppMain } from './components';
                 <Navbar />
             </el-header>
             <el-main>
-                <AppMain />
+                <el-scrollbar :height="scrollHeight">
+                    <div class="scroll-content">
+                        <AppMain />
+                    </div>
+                </el-scrollbar>
             </el-main>
         </el-container>
     </el-container>
 </template>
 
-<style scoped>
-.layout-container .el-header {
-  line-height: 60px;
-  padding: 0;
-}
+<style lang="scss" scoped>
+.layout-container {
+    .el-header {
+        line-height: 60px;
+        padding: 0;
+    }
 
-.layout-container .el-main {
-  background-color: #e9eef3;
-  color: var(--el-text-color-primary);
-  text-align: center;
-  line-height: 160px;
+    .el-main {
+        padding: 0;
+    }
+
+    .scroll-content {
+        padding: 20px;
+    }
 }
 </style>
