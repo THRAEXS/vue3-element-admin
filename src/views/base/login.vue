@@ -92,7 +92,7 @@ $cursor: #fff;
 
     .el-input {
 
-        ::v-deep input {
+        :deep(input) {
             background: transparent;
             -webkit-appearance: none;
             color: $light_gray;

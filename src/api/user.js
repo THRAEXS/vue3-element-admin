@@ -1,27 +1,27 @@
-// import { request } from '@/utils';
+import request from '@/utils/request';
 
 export async function login(data) {
-    /* return request({
-        url: '/api/thraex/user/login',
+    return request({
+        url: '/api/admin/auth/login',
         method: 'POST',
         data
-    }); */
+    });
 
-    const { username, password } = data;
+    // const { username, password } = data;
 
-    // console.log('request login:', username, password);
-    return username === 'master' && password === '111111' ? {
-        code: 20000,
-        data: `${username.toUpperCase()}-TOKEN`
-    } : {
-        code: 40001,
-        message: 'Account and password are incorrect.'
-    };
+    // // console.log('request login:', username, password);
+    // return username === 'master' && password === '111111' ? {
+    //     code: 20000,
+    //     data: `${username.toUpperCase()}-TOKEN`
+    // } : {
+    //     code: 40001,
+    //     message: 'Account and password are incorrect.'
+    // };
 }
 
 export async function info() {
     /* return request({
-        url: '/api/thraex/user',
+        url: '/api/admin/user',
         method: 'GET'
     }); */
 
@@ -38,7 +38,7 @@ export async function info() {
 
 export async function logout() {
     /* return request({
-        url: '/api/thraex/user/logout',
+        url: '/api/admin/user/logout',
         method: 'POST'
     }); */
 

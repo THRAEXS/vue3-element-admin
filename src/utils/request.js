@@ -1,17 +1,17 @@
 import axios from 'axios';
-import { getters } from '@/store';
+import store from '@/store';
 import { Cookie } from '@/utils';
 
 const TOKEN_KEY = import.meta.env.VITE_TOKEN_KEY;
 
 const instance = axios.create({
-    baseURL: import.meta.env.VITE_API,
+    // baseURL: import.meta.env.VITE_API,
     timeout: 6000
 });
 
 instance.interceptors.request.use(
     config => {
-        getters.token && (config.headers[TOKEN_KEY] = Cookie.getToken());
+        store.getters.token && (config.headers[TOKEN_KEY] = Cookie.getToken());
 
         return config;
     },

@@ -23,6 +23,13 @@ export default defineConfig({
         }
     },
     server: {
-        port: '8717'
+        port: '8717',
+        proxy: {
+            '/api/admin': {
+                target: 'http://localhost:8037',
+                changeOrigin: true,
+                rewrite: path => path.replace(/^\/api\/admin/, '')
+            }
+        }
     }
 });
