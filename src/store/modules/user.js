@@ -15,9 +15,9 @@ const mutations = {
 };
 
 const actions = {
-    login({ commit }, data) {
+    signin({ commit }, data) {
         return new Promise((resolve, reject) => {
-            user.login(data).then(res => {
+            user.signin(data).then(res => {
                 commit('SET_TOKEN', res.data);
                 Cookie.setToken(res.data);
                 resolve();
@@ -36,9 +36,9 @@ const actions = {
             }).catch(reject);
         });
     },
-    logout({ commit }) {
+    signout({ commit }) {
         return new Promise((resolve, reject) => {
-            user.logout().then(({ data }) => {
+            user.signout().then(({ data }) => {
                 Cookie.removeToken();
                 commit('RESET_STATE');
                 resolve(data);

@@ -8,9 +8,9 @@ const route = useRoute();
 const store = useStore();
 
 async function handleLogout() {
-    await store.dispatch('user/logout');
+    await store.dispatch('user/signout');
     const { fullPath: redirect } = route;
-    router.push({ path: '/login', query: redirect === '/' ? {} : { redirect }});
+    router.push({ path: '/signin', query: redirect === '/' ? {} : { redirect }});
 }
 </script>
 

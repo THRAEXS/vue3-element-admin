@@ -14,7 +14,7 @@ const data = reactive({ form, loading });
 
 function handleLogin() {
     data.loading = true;
-    store.dispatch('user/login', data.form)
+    store.dispatch('user/signin', data.form)
         .then(() => router.push(route.query.redirect ?? '/'))
         .catch(error => console.error('Login error:', error))
         .finally(() => (data.loading = false));
@@ -67,6 +67,13 @@ function handleLogin() {
                     Login
                 </el-button>
             </el-form>
+
+            <div class="signup">
+                <el-space>
+                    <el-link type="info" href="/signup/org" target="_blank">高校注册</el-link>
+                    <el-link type="info" href="/signup/user" target="_blank">个人注册</el-link>
+                </el-space>
+            </div>
         </el-col>
     </el-row>
 </template>
@@ -103,6 +110,11 @@ $cursor: #fff;
                 -webkit-text-fill-color: $cursor !important;
             }
         }
+    }
+
+    .signup {
+        margin-top: 10px;
+        text-align: right;
     }
 }
 </style>

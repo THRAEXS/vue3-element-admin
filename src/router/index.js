@@ -8,8 +8,8 @@ import Routes from './routes';
 
 const routes = [
     {
-        path: '/login',
-        component: () => import('@/views/base/login.vue'),
+        path: '/signin',
+        component: () => import('@/views/base/signin.vue'),
         meta: { hidden: true }
     },
     {

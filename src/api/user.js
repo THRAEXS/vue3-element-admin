@@ -1,6 +1,6 @@
 import request from '@/utils/request';
 
-export async function login(data) {
+export async function signin(data) {
     return request({
         url: '/api/admin/auth/login',
         method: 'POST',
@@ -36,7 +36,7 @@ export async function info() {
     };
 }
 
-export async function logout() {
+export async function signout() {
     /* return request({
         url: '/api/admin/user/logout',
         method: 'POST'
@@ -48,4 +48,4 @@ export async function logout() {
     };
 }
 
-export default { login, info, logout };
+export default { signin, info, signout };

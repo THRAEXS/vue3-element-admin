@@ -8,10 +8,12 @@ import { pageTitle, Cookie } from '@/utils';
 NProgress.configure({ showSpinner: false });
 
 const PERMITS = [
-    '/login'
+    '/signin',
+    '/signup/org',
+    '/signup/user'
 ];
 
-const toLogin = redirect => ({ path: '/login', query: redirect === '/' ? {} : { redirect }});
+const toLogin = redirect => ({ path: '/signin', query: redirect === '/' ? {} : { redirect }});
 
 router.beforeEach(async(to, from, next) => {
     NProgress.start();
@@ -21,7 +23,7 @@ router.beforeEach(async(to, from, next) => {
     document.title = pageTitle(meta?.title);
 
     if (Cookie.getToken()) {
-        if (path === '/login') {
+        if (path === '/signin') {
             next('/');
         } else {
             const userinfo = store.getters.info;
