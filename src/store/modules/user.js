@@ -18,9 +18,13 @@ const actions = {
     signin({ commit }, data) {
         return new Promise((resolve, reject) => {
             user.signin(data).then(res => {
-                commit('SET_TOKEN', res.data);
-                Cookie.setToken(res.data);
-                resolve();
+                if (res.data) {
+                    commit('SET_TOKEN', res.data);
+                    Cookie.setToken(res.data);
+                    resolve();
+                } else {
+                    reject(res.message);
+                }
             }).catch(reject);
         });
     },

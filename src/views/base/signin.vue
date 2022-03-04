@@ -16,7 +16,7 @@ function handleLogin() {
     data.loading = true;
     store.dispatch('user/signin', data.form)
         .then(() => router.push(route.query.redirect ?? '/'))
-        .catch(error => console.error('Login error:', error))
+        .catch(error => console.error('Signin error:', error))
         .finally(() => (data.loading = false));
 }
 </script>
@@ -70,7 +70,7 @@ function handleLogin() {
 
             <div class="signup">
                 <el-space>
-                    <el-link type="info" href="/signup/org" target="_blank">高校注册</el-link>
+                    <el-link type="info" href="/signup/org" target="_blank">单位注册</el-link>
                     <el-link type="info" href="/signup/user" target="_blank">个人注册</el-link>
                 </el-space>
             </div>
